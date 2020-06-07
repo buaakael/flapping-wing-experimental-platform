@@ -145,3 +145,8 @@ void MyWidget::on_run_clicked()
     mySerialPort2->write(motion->pitchResetSignal());
     mySerialPort3->write(motion->attackResetSignal());
 }
+
+void MyWidget::on_closeSerialPort_clicked()
+{
+    closeSerialPort();
+}
