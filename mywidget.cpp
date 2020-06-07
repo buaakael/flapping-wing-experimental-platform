@@ -1,5 +1,9 @@
 #include "mywidget.h"
 #include "ui_mywidget.h"
+#include <QTime>
+#include <QTimer>
+#include <QDebug>
+
 
 MyWidget::MyWidget(QWidget *parent) :
     QWidget(parent),
@@ -7,12 +11,20 @@ MyWidget::MyWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     initSerialPort();
+    Motion *motion = new Sin_Sin_Sin();
 }
 
 MyWidget::~MyWidget()
 {
     closeSerialPort();
     delete ui;
+}
+
+void sleep(unsigned int msec)
+{
+    QTime dieTime = QTime::currentTime().addMSecs(msec);
+    while( QTime::currentTime() < dieTime )
+    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
 //初始化串口，获取串口信息
@@ -91,3 +103,46 @@ void MyWidget::on_openSerialPort_clicked()
     mySerialPort3->setFlowControl(QSerialPort::NoFlowControl);
 }
 
+
+void MyWidget::on_reset_clicked()
+{
+    mySerialPort1->write(motion->resetSignal());
+    mySerialPort2->write(motion->resetSignal());
+    mySerialPort3->write(motion->resetSignal());
+}
+
+
+void MyWidget::on_model_clicked()
+{
+    mySerialPort1->write(motion->modelSignal());
+    mySerialPort2->write(motion->modelSignal());
+    mySerialPort3->write(motion->modelSignal());
+}
+
+void MyWidget::on_run_clicked()
+{
+    sleep(3000);
+    //移动三个电机到初始化位置
+    mySerialPort1->write(motion->flapInitSignal());
+    mySerialPort2->write(motion->pitchInitSignal());
+    mySerialPort3->write(motion->attackInitSignal());
+
+    //开始运动
+    for (int i = 0; i < 3; ++i)
+    {
+        for (int j = 0; j <=100; ++j)
+        {
+            mySerialPort1->write(motion->flapSignal(j, 100));
+            mySerialPort2->write(motion->pitchSignal(j, 100));
+            mySerialPort3->write(motion->attackSignal(j, 100));
+            qDebug() << motion->flapAngle(j, 100) << "\t" << motion->pitchAngle(j, 100) << "\t" << motion->attackAngle(j, 100);
+        }
+        sleep(30);
+    }
+
+    sleep(3000);
+    //运动结束，复位到初始位置
+    mySerialPort1->write(motion->flapResetSignal());
+    mySerialPort2->write(motion->pitchResetSignal());
+    mySerialPort3->write(motion->attackResetSignal());
+}

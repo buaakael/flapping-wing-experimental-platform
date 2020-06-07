@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mywidget.cpp \
-    motion.cpp
+    motion.cpp \
+    sin_sin_sin.cpp
 
 HEADERS  += mywidget.h \
-    motion.h
+    motion.h \
+    sin_sin_sin.h
 
 FORMS    += mywidget.ui

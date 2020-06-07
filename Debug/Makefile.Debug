@@ -45,16 +45,20 @@ OBJECTS_DIR   = debug
 
 SOURCES       = ..\main.cpp \
 		..\mywidget.cpp \
-		..\motion.cpp debug\moc_mywidget.cpp
+		..\motion.cpp \
+		..\sin_sin_sin.cpp debug\moc_mywidget.cpp
 OBJECTS       = debug/main.o \
 		debug/mywidget.o \
 		debug/motion.o \
+		debug/sin_sin_sin.o \
 		debug/moc_mywidget.o
 
 DIST          =  ..\mywidget.h \
-		..\motion.h ..\main.cpp \
+		..\motion.h \
+		..\sin_sin_sin.h ..\main.cpp \
 		..\mywidget.cpp \
-		..\motion.cpp
+		..\motion.cpp \
+		..\sin_sin_sin.cpp
 QMAKE_TARGET  = FWEP
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = FWEP.exe
@@ -77,7 +81,7 @@ dist:
 	$(ZIP) FWEP.zip $(SOURCES) $(DIST) ..\..\FWEP.pro D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\spec_pre.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\qdevice.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\device_config.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\common\angle.conf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\qconfig.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3drender.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_axbase.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_axserver.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_charts.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_clucene_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_core.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_core_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_dbus.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_designer.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_gui.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_help.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_help_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_location.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_location_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_network.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_network_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_nfc.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_opengl.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_platformsupport_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_positioning.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_qml.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_quick.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_script.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_script_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_scxml.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_sensors.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_serialport.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_sql.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_svg.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_testlib.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_uitools.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_websockets.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_widgets.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_winextras.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_xml.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\qt_functions.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\qt_config.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\win32\qt_config.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\win32-g++\qmake.conf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\exclusive_builds.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\default_pre.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\win32\default_pre.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\resolve_config.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\exclusive_builds_post.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\default_post.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\build_pass.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\qml_debug.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\win32\rtti.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\precompile_header.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\warn_on.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\qt.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\resources.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\moc.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\win32\opengl.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\uic.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\file_copies.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\win32\windows.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\testcase_targets.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\exceptions.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\yacc.prf D:\program\QT\QT5.7.0\5.7\mingw53_32\mkspecs\features\lex.prf ..\FWEP.pro D:\program\QT\QT5.7.0\5.7\mingw53_32\lib\qtmaind.prl D:\program\QT\QT5.7.0\5.7\mingw53_32\lib\Qt5Widgetsd.prl D:\program\QT\QT5.7.0\5.7\mingw53_32\lib\Qt5Guid.prl D:\program\QT\QT5.7.0\5.7\mingw53_32\lib\Qt5SerialPortd.prl D:\program\QT\QT5.7.0\5.7\mingw53_32\lib\Qt5Cored.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\main.o debug\mywidget.o debug\motion.o debug\moc_mywidget.o
+	-$(DEL_FILE) debug\main.o debug\mywidget.o debug\motion.o debug\sin_sin_sin.o debug\moc_mywidget.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -475,7 +479,16 @@ debug/mywidget.o: ../mywidget.cpp ../mywidget.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/qheaderview.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qitemselectionmodel.h
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/QPushButton \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/QTime \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qdatetime.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/QTimer \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qtimer.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qbasictimer.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mywidget.o ..\mywidget.cpp
 
 debug/motion.o: ../motion.cpp ../motion.h \
@@ -510,6 +523,40 @@ debug/motion.o: ../motion.cpp ../motion.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qarraydata.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qstringbuilder.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\motion.o ..\motion.cpp
+
+debug/sin_sin_sin.o: ../sin_sin_sin.cpp ../sin_sin_sin.h \
+		../motion.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/QString \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qstring.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qchar.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qglobal.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qconfig.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qfeatures.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qsystemdetection.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qprocessordetection.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qcompilerdetection.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qtypeinfo.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qtypetraits.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qisenum.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qsysinfo.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qlogging.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qflags.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qatomic.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qbasicatomic.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qatomic_bootstrap.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qgenericatomic.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qatomic_cxx11.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qatomic_msvc.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qglobalstatic.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qmutex.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qnumeric.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qversiontagging.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qbytearray.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qrefcount.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qnamespace.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qarraydata.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\sin_sin_sin.o ..\sin_sin_sin.cpp
 
 debug/moc_mywidget.o: debug/moc_mywidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_mywidget.o debug\moc_mywidget.cpp

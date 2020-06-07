@@ -10,9 +10,18 @@ public:
 
     QByteArray resetSignal();
     QByteArray modelSignal();
-    virtual QByteArray flapSignal() = 0;
-    virtual QByteArray pitchSignal() = 0;
-    virtual QByteArray attackSignal() = 0;
+    QByteArray flapResetSignal();
+    QByteArray pitchResetSignal();
+    QByteArray attackResetSignal();
+    QByteArray flapInitSignal();
+    QByteArray pitchInitSignal();
+    QByteArray attackInitSignal();
+    virtual QByteArray flapSignal(int cur, int seg) = 0;
+    virtual QByteArray pitchSignal(int cur, int seg) = 0;
+    virtual QByteArray attackSignal(int cur, int seg) = 0;
+    virtual int flapAngle(int cur, int seg) = 0;
+    virtual int pitchAngle(int cur, int seg) = 0;
+    virtual int attackAngle(int cur, int seg) = 0;
 };
 
 #endif // MOTION_H
