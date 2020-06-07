@@ -205,9 +205,12 @@ debug/moc_mywidget.cpp: D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/Q
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort/qserialportglobal.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort/QSerialPortInfo \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		../motion.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/QString \
+		../sin_sin_sin.h \
 		../mywidget.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/bin/moc.exe
-	D:\program\QT\QT5.7.0\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/program/QT/QT5.7.0/5.7/mingw53_32/mkspecs/win32-g++ -I"C:/Users/kael/Desktop/Flapping wing experimental platform/FWEP" -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtGui -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtANGLE -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore -I. -ID:/program/QT/QT5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -ID:/program/QT/QT5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -ID:/program/QT/QT5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -ID:/program/QT/QT5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -ID:/program/QT/QT5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -ID:/program/QT/QT5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\mywidget.h -o debug\moc_mywidget.cpp
+	D:\program\QT\QT5.7.0\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/program/QT/QT5.7.0/5.7/mingw53_32/mkspecs/win32-g++ -IC:/Users/kael/Desktop/FWEP -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtGui -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtANGLE -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort -ID:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore -I. -ID:/program/QT/QT5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -ID:/program/QT/QT5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -ID:/program/QT/QT5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -ID:/program/QT/QT5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -ID:/program/QT/QT5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -ID:/program/QT/QT5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\mywidget.h -o debug\moc_mywidget.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -333,6 +336,9 @@ debug/main.o: ../main.cpp ../mywidget.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort/qserialportglobal.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort/QSerialPortInfo \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		../motion.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/QString \
+		../sin_sin_sin.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/QApplication \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/qapplication.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -445,6 +451,9 @@ debug/mywidget.o: ../mywidget.cpp ../mywidget.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort/qserialportglobal.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort/QSerialPortInfo \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtSerialPort/qserialportinfo.h \
+		../motion.h \
+		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/QString \
+		../sin_sin_sin.h \
 		../debug/ui_mywidget.h \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtCore/QVariant \
 		D:/program/QT/QT5.7.0/5.7/mingw53_32/include/QtWidgets/QAction \

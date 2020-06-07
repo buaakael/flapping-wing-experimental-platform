@@ -1,4 +1,4 @@
-#include "mywidget.h"
+﻿#include "mywidget.h"
 #include "ui_mywidget.h"
 #include <QTime>
 #include <QTimer>
@@ -11,7 +11,6 @@ MyWidget::MyWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     initSerialPort();
-    Motion *motion = new Sin_Sin_Sin();
 }
 
 MyWidget::~MyWidget()
@@ -126,7 +125,7 @@ void MyWidget::on_run_clicked()
     mySerialPort1->write(motion->flapInitSignal());
     mySerialPort2->write(motion->pitchInitSignal());
     mySerialPort3->write(motion->attackInitSignal());
-
+    sleep(3000);
     //开始运动
     for (int i = 0; i < 3; ++i)
     {
@@ -136,8 +135,8 @@ void MyWidget::on_run_clicked()
             mySerialPort2->write(motion->pitchSignal(j, 100));
             mySerialPort3->write(motion->attackSignal(j, 100));
             qDebug() << motion->flapAngle(j, 100) << "\t" << motion->pitchAngle(j, 100) << "\t" << motion->attackAngle(j, 100);
+            sleep(30);
         }
-        sleep(30);
     }
 
     sleep(3000);

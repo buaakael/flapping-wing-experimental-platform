@@ -1,4 +1,4 @@
-#ifndef MOTION_H
+﻿#ifndef MOTION_H
 #define MOTION_H
 
 #include <QString>

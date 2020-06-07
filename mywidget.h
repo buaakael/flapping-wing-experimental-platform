@@ -1,4 +1,4 @@
-#ifndef MYWIDGET_H
+﻿#ifndef MYWIDGET_H
 #define MYWIDGET_H
 
 #include <QWidget>
@@ -37,7 +37,7 @@ private:
     QSerialPort *mySerialPort1;
     QSerialPort *mySerialPort2;
     QSerialPort *mySerialPort3;
-    Motion *motion;
+    Motion *motion = new Sin_Sin_Sin();
 
     Ui::MyWidget *ui;
 };
