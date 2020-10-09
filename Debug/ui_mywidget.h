@@ -14,8 +14,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,31 +26,30 @@ QT_BEGIN_NAMESPACE
 class Ui_MyWidget
 {
 public:
-    QComboBox *com1;
-    QComboBox *com2;
-    QComboBox *com3;
     QPushButton *openSerialPort;
     QPushButton *reset;
     QPushButton *model;
     QPushButton *run;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
+    QVBoxLayout *verticalLayout_2;
+    QComboBox *com1;
+    QComboBox *com2;
+    QComboBox *com3;
+    QPushButton *closeSerialPort;
 
     void setupUi(QWidget *MyWidget)
     {
         if (MyWidget->objectName().isEmpty())
             MyWidget->setObjectName(QStringLiteral("MyWidget"));
         MyWidget->resize(653, 485);
-        com1 = new QComboBox(MyWidget);
-        com1->setObjectName(QStringLiteral("com1"));
-        com1->setGeometry(QRect(130, 80, 87, 22));
-        com2 = new QComboBox(MyWidget);
-        com2->setObjectName(QStringLiteral("com2"));
-        com2->setGeometry(QRect(130, 120, 87, 22));
-        com3 = new QComboBox(MyWidget);
-        com3->setObjectName(QStringLiteral("com3"));
-        com3->setGeometry(QRect(130, 160, 87, 22));
         openSerialPort = new QPushButton(MyWidget);
         openSerialPort->setObjectName(QStringLiteral("openSerialPort"));
-        openSerialPort->setGeometry(QRect(120, 220, 93, 28));
+        openSerialPort->setGeometry(QRect(90, 230, 93, 28));
         reset = new QPushButton(MyWidget);
         reset->setObjectName(QStringLiteral("reset"));
         reset->setGeometry(QRect(90, 330, 93, 28));
@@ -57,6 +59,59 @@ public:
         run = new QPushButton(MyWidget);
         run->setObjectName(QStringLiteral("run"));
         run->setGeometry(QRect(370, 330, 93, 28));
+        layoutWidget = new QWidget(MyWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(70, 60, 211, 111));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        label = new QLabel(layoutWidget);
+        label->setObjectName(QStringLiteral("label"));
+
+        verticalLayout->addWidget(label);
+
+        label_2 = new QLabel(layoutWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        verticalLayout->addWidget(label_2);
+
+        label_3 = new QLabel(layoutWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        verticalLayout->addWidget(label_3);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        com1 = new QComboBox(layoutWidget);
+        com1->setObjectName(QStringLiteral("com1"));
+
+        verticalLayout_2->addWidget(com1);
+
+        com2 = new QComboBox(layoutWidget);
+        com2->setObjectName(QStringLiteral("com2"));
+
+        verticalLayout_2->addWidget(com2);
+
+        com3 = new QComboBox(layoutWidget);
+        com3->setObjectName(QStringLiteral("com3"));
+
+        verticalLayout_2->addWidget(com3);
+
+
+        horizontalLayout->addLayout(verticalLayout_2);
+
+        closeSerialPort = new QPushButton(MyWidget);
+        closeSerialPort->setObjectName(QStringLiteral("closeSerialPort"));
+        closeSerialPort->setGeometry(QRect(230, 230, 93, 28));
 
         retranslateUi(MyWidget);
 
@@ -70,6 +125,10 @@ public:
         reset->setText(QApplication::translate("MyWidget", "\345\244\215\344\275\215", 0));
         model->setText(QApplication::translate("MyWidget", "\346\250\241\345\274\217", 0));
         run->setText(QApplication::translate("MyWidget", "\350\277\220\345\212\250", 0));
+        label->setText(QApplication::translate("MyWidget", "\344\270\212\351\203\250\347\224\265\346\234\272", 0));
+        label_2->setText(QApplication::translate("MyWidget", "\344\277\257\344\273\260\347\224\265\346\234\272", 0));
+        label_3->setText(QApplication::translate("MyWidget", "\345\200\276\350\275\254\347\224\265\346\234\272", 0));
+        closeSerialPort->setText(QApplication::translate("MyWidget", "\345\205\263\351\227\255\344\270\262\345\217\243", 0));
     } // retranslateUi
 
 };
