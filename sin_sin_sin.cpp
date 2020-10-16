@@ -136,7 +136,7 @@ QByteArray Sin_Sin_Sin::attackSignal(int cur, int seg)
 
 int Sin_Sin_Sin::flapAngle(int cur, int seg)
 {
-    int fAngle = 44000 * cos(2 * 3.1415926 * cur / double(seg));
+    int fAngle = -44000 * cos(2 * 3.1415926 * cur / double(seg));
     return fAngle;
 }
 

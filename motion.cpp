@@ -50,10 +50,10 @@ QByteArray Motion::flapInitSignal()
     fInitData[3] = 0xF4;
     fInitData[4] = 0x01;
     fInitData[5] = 0xF4;
-    fInitData[6] = 0x00;
-    fInitData[7] = 0x00;
-    fInitData[8] = 0xAB;
-    fInitData[9] = 0xE0;
+    fInitData[6] = 0xFF;
+    fInitData[7] = 0xFF;
+    fInitData[8] = 0x54;
+    fInitData[9] = 0x20;
 
     return fInitData;
 }
