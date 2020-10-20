@@ -19,6 +19,9 @@ public:
     virtual QByteArray flapSignal(int cur, int seg) = 0;
     virtual QByteArray pitchSignal(int cur, int seg) = 0;
     virtual QByteArray attackSignal(int cur, int seg) = 0;
+    virtual QByteArray flapSignal(int fAngle) = 0;
+    virtual QByteArray pitchSignal(int pAngle) = 0;
+    virtual QByteArray attackSignal(int aAngle) = 0;
     virtual int flapAngle(int cur, int seg) = 0;
     virtual int pitchAngle(int cur, int seg) = 0;
     virtual int attackAngle(int cur, int seg) = 0;

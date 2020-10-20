@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>653</width>
-    <height>485</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="openSerialPort">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>230</y>
+     <x>110</x>
+     <y>170</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="reset">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>330</y>
+     <x>550</x>
+     <y>30</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -42,8 +42,8 @@
   <widget class="QPushButton" name="model">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>330</y>
+     <x>550</x>
+     <y>70</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -55,8 +55,8 @@
   <widget class="QPushButton" name="run">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>330</y>
+     <x>170</x>
+     <y>710</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -65,61 +65,11 @@
     <string>运动</string>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>60</y>
-     <width>211</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>上部电机</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>俯仰电机</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>倾转电机</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QComboBox" name="com1"/>
-      </item>
-      <item>
-       <widget class="QComboBox" name="com2"/>
-      </item>
-      <item>
-       <widget class="QComboBox" name="com3"/>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
   <widget class="QPushButton" name="closeSerialPort">
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>230</y>
+     <y>170</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -127,6 +77,123 @@
    <property name="text">
     <string>关闭串口</string>
    </property>
+  </widget>
+  <widget class="QPushButton" name="init">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>710</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>初始化</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>40</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>调试角度(单位/qc)</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="debug">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>110</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>调试</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>72</x>
+     <y>62</y>
+     <width>276</width>
+     <height>82</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="flap_motor1">
+        <property name="text">
+         <string>上部电机</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="com1"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="debug_angle1">
+        <property name="inputMask">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="pitch_motor1">
+        <property name="text">
+         <string>俯仰电机</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="com2"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="debug_angle2">
+        <property name="inputMask">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="attack_motor1">
+        <property name="text">
+         <string>倾转电机</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="com3"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="debug_angle3">
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

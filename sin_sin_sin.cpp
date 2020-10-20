@@ -134,6 +134,132 @@ QByteArray Sin_Sin_Sin::attackSignal(int cur, int seg)
     return attack;
 }
 
+QByteArray Sin_Sin_Sin::flapSignal(int fAngle)
+{
+    QByteArray flap;
+    QByteArray t1;
+    QByteArray t2;
+    QByteArray temp1;
+
+    t1.append(0x23);
+    t1.append(0x06);
+    t1.append(0x07);
+    t1.append(0xD0);
+    t1.append(0x07);
+    t1.append(0xD0);
+    t1.append((char)0x00);
+    t1.append((char)0x00);
+
+    t2.append(0x23);
+    t2.append(0x06);
+    t2.append(0x07);
+    t2.append(0xD0);
+    t2.append(0x07);
+    t2.append(0xD0);
+    t2.append(0xFF);
+    t2.append(0xFF);
+
+    temp1[0] = (uchar)((0xFF00&fAngle)>>8);
+    temp1[1] = (uchar)(0x00FF&fAngle);
+
+    if(fAngle >= 0)
+    {
+        flap.append(t1);
+        flap.append(temp1);
+    }
+    else
+    {
+        flap.append(t2);
+        flap.append(temp1);
+    }
+
+    return flap;
+}
+
+QByteArray Sin_Sin_Sin::pitchSignal(int pAngle)
+{
+    QByteArray pitch;
+    QByteArray t1;
+    QByteArray t2;
+    QByteArray temp2;
+
+    t1.append(0x23);
+    t1.append(0x06);
+    t1.append(0x07);
+    t1.append(0xD0);
+    t1.append(0x07);
+    t1.append(0xD0);
+    t1.append((char)0x00);
+    t1.append((char)0x00);
+
+    t2.append(0x23);
+    t2.append(0x06);
+    t2.append(0x07);
+    t2.append(0xD0);
+    t2.append(0x07);
+    t2.append(0xD0);
+    t2.append(0xFF);
+    t2.append(0xFF);
+
+    temp2[0] = (uchar)((0xFF00&pAngle)>>8);
+    temp2[1] = (uchar)(0x00FF&pAngle);
+
+    if(pAngle >= 0)
+    {
+        pitch.append(t1);
+        pitch.append(temp2);
+    }
+    else
+    {
+        pitch.append(t2);
+        pitch.append(temp2);
+    }
+
+    return pitch;
+}
+
+QByteArray Sin_Sin_Sin::attackSignal(int aAngle)
+{
+    QByteArray attack;
+    QByteArray t1;
+    QByteArray t2;
+    QByteArray temp3;
+
+    t1.append(0x23);
+    t1.append(0x06);
+    t1.append(0x07);
+    t1.append(0xD0);
+    t1.append(0x07);
+    t1.append(0xD0);
+    t1.append((char)0x00);
+    t1.append((char)0x00);
+
+    t2.append(0x23);
+    t2.append(0x06);
+    t2.append(0x07);
+    t2.append(0xD0);
+    t2.append(0x07);
+    t2.append(0xD0);
+    t2.append(0xFF);
+    t2.append(0xFF);
+
+    temp3[0] = (uchar)((0xFF00&aAngle)>>8);
+    temp3[1] = (uchar)(0x00FF&aAngle);
+
+    if(aAngle >= 0)
+    {
+        attack.append(t1);
+        attack.append(temp3);
+    }
+    else
+    {
+        attack.append(t2);
+        attack.append(temp3);
+    }
+
+    return attack;
+}
+
 int Sin_Sin_Sin::flapAngle(int cur, int seg)
 {
     int fAngle = -44000 * cos(2 * 3.1415926 * cur / double(seg));

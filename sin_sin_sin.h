@@ -12,6 +12,9 @@ public:
     QByteArray flapSignal(int cur, int seg);
     QByteArray pitchSignal(int cur, int seg);
     QByteArray attackSignal(int cur, int seg);
+    QByteArray flapSignal(int fAngle);
+    QByteArray pitchSignal(int pAngle);
+    QByteArray attackSignal(int aAngle);
     int flapAngle(int cur, int seg);
     int pitchAngle(int cur, int seg);
     int attackAngle(int cur, int seg);

@@ -30,6 +30,10 @@ private slots:
 
     void on_closeSerialPort_clicked();
 
+    void on_init_clicked();
+
+    void on_debug_clicked();
+
 private:
     void initSerialPort();
     void closeSerialPort();

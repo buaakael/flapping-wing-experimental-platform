@@ -116,6 +116,13 @@ void MyWidget::on_model_clicked()
     mySerialPort1->write(motion->modelSignal());
     mySerialPort2->write(motion->modelSignal());
     mySerialPort3->write(motion->modelSignal());
+
+    sleep(100);
+
+    //发送零位信息，固定电机位置
+    mySerialPort1->write(motion->flapResetSignal());
+    mySerialPort2->write(motion->pitchResetSignal());
+    mySerialPort3->write(motion->attackResetSignal());
 }
 
 void MyWidget::on_run_clicked()
@@ -149,4 +156,38 @@ void MyWidget::on_run_clicked()
 void MyWidget::on_closeSerialPort_clicked()
 {
     closeSerialPort();
+}
+
+void MyWidget::on_init_clicked()
+{
+    //复位
+    mySerialPort1->write(motion->resetSignal());
+    mySerialPort2->write(motion->resetSignal());
+    mySerialPort3->write(motion->resetSignal());
+
+    sleep(500);
+
+    //选择模式
+    mySerialPort1->write(motion->modelSignal());
+    mySerialPort2->write(motion->modelSignal());
+    mySerialPort3->write(motion->modelSignal());
+
+    sleep(100);
+
+    //发送零位信息，固定电机位置
+    mySerialPort1->write(motion->flapResetSignal());
+    mySerialPort2->write(motion->pitchResetSignal());
+    mySerialPort3->write(motion->attackResetSignal());
+}
+
+void MyWidget::on_debug_clicked()
+{
+    int fAngle = ui->debug_angle1->text().toInt();
+    int pAngle = ui->debug_angle2->text().toInt();
+    int aAngle = ui->debug_angle3->text().toInt();
+//    qDebug() << fAngle << " " << pAngle << " " << aAngle << "\t";
+
+    mySerialPort1->write(motion->flapSignal(fAngle));
+    mySerialPort2->write(motion->pitchSignal(pAngle));
+    mySerialPort3->write(motion->attackSignal(aAngle));
 }
