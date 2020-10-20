@@ -10,6 +10,7 @@ MyWidget::MyWidget(QWidget *parent) :
     ui(new Ui::MyWidget)
 {
     ui->setupUi(this);
+    initChart();
     initSerialPort();
 }
 
@@ -127,6 +128,7 @@ void MyWidget::on_model_clicked()
 
 void MyWidget::on_run_clicked()
 {
+    int count = 0;
     sleep(3000);
     //移动三个电机到初始化位置
     mySerialPort1->write(motion->flapInitSignal());
@@ -142,7 +144,15 @@ void MyWidget::on_run_clicked()
             mySerialPort2->write(motion->pitchSignal(j, 100));
             mySerialPort3->write(motion->attackSignal(j, 100));
             qDebug() << motion->flapAngle(j, 100) << "\t" << motion->pitchAngle(j, 100) << "\t" << motion->attackAngle(j, 100);
+            flapSeries->append(QPointF(count, motion->flapAngle(j, 100) / (4000 * 66.0)));
+            if (count % 20 == 0)
+            {
+                myChart->removeSeries(flapSeries);
+                myChart->addSeries(flapSeries);
+                ui->widget->setChart(myChart);
+            }
             sleep(30);
+            count++;
         }
     }
 
@@ -190,4 +200,24 @@ void MyWidget::on_debug_clicked()
     mySerialPort1->write(motion->flapSignal(fAngle));
     mySerialPort2->write(motion->pitchSignal(pAngle));
     mySerialPort3->write(motion->attackSignal(aAngle));
+}
+
+void MyWidget::initChart()
+{
+    myChart = new QChart();
+    flapSeries = new QSplineSeries();
+    pitchSeries = new QSplineSeries();
+    attackSeries = new QSplineSeries();
+    QValueAxis *axisX = new QValueAxis();
+    QValueAxis *axisY = new QValueAxis();
+    myChart->legend()->hide();
+    myChart->setTheme(QChart::ChartThemeBlueCerulean);
+    axisX->setRange(0, 300);
+    axisY->setRange(-90,90);
+    axisX->setTitleText("Time/s");
+    axisY->setTitleText("Angle/°");
+    myChart->setAxisX(axisX);
+    myChart->setAxisY(axisY);
+    myChart->addSeries(flapSeries);
+    ui->widget->setChart(myChart);
 }

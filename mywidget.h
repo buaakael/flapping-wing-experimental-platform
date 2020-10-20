@@ -4,6 +4,14 @@
 #include <QWidget>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
+#include <QtCharts/QtCharts>
+#include <QtCharts/QChart>
+#include <QtCharts/QChartView>
+#include <QtCharts/QSplineSeries>
+#include <QValueAxis>
+#include <QPoint>
+#include <QPointF>
+QT_CHARTS_USE_NAMESPACE
 #include "motion.h"
 #include "sin_sin_sin.h"
 
@@ -35,6 +43,7 @@ private slots:
     void on_debug_clicked();
 
 private:
+    void initChart();
     void initSerialPort();
     void closeSerialPort();
 
@@ -43,6 +52,13 @@ private:
     QSerialPort *mySerialPort1;
     QSerialPort *mySerialPort2;
     QSerialPort *mySerialPort3;
+
+    QChart *myChart;
+    QSplineSeries *flapSeries;
+    QSplineSeries *pitchSeries;
+    QSplineSeries *attackSeries;
+
+
     Motion *motion = new Sin_Sin_Sin();
 
     Ui::MyWidget *ui;

@@ -21,6 +21,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <qchartview.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -35,7 +36,7 @@ public:
     QPushButton *init;
     QLabel *label;
     QPushButton *debug;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *flap_motor1;
@@ -49,6 +50,7 @@ public:
     QLabel *attack_motor1;
     QComboBox *com3;
     QLineEdit *debug_angle3;
+    QChartView *widget;
 
     void setupUi(QWidget *MyWidget)
     {
@@ -79,10 +81,10 @@ public:
         debug = new QPushButton(MyWidget);
         debug->setObjectName(QStringLiteral("debug"));
         debug->setGeometry(QRect(550, 110, 93, 28));
-        widget = new QWidget(MyWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(72, 62, 276, 82));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(MyWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(72, 62, 276, 82));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
@@ -90,17 +92,17 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        flap_motor1 = new QLabel(widget);
+        flap_motor1 = new QLabel(layoutWidget);
         flap_motor1->setObjectName(QStringLiteral("flap_motor1"));
 
         horizontalLayout->addWidget(flap_motor1);
 
-        com1 = new QComboBox(widget);
+        com1 = new QComboBox(layoutWidget);
         com1->setObjectName(QStringLiteral("com1"));
 
         horizontalLayout->addWidget(com1);
 
-        debug_angle1 = new QLineEdit(widget);
+        debug_angle1 = new QLineEdit(layoutWidget);
         debug_angle1->setObjectName(QStringLiteral("debug_angle1"));
 
         horizontalLayout->addWidget(debug_angle1);
@@ -111,17 +113,17 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        pitch_motor1 = new QLabel(widget);
+        pitch_motor1 = new QLabel(layoutWidget);
         pitch_motor1->setObjectName(QStringLiteral("pitch_motor1"));
 
         horizontalLayout_2->addWidget(pitch_motor1);
 
-        com2 = new QComboBox(widget);
+        com2 = new QComboBox(layoutWidget);
         com2->setObjectName(QStringLiteral("com2"));
 
         horizontalLayout_2->addWidget(com2);
 
-        debug_angle2 = new QLineEdit(widget);
+        debug_angle2 = new QLineEdit(layoutWidget);
         debug_angle2->setObjectName(QStringLiteral("debug_angle2"));
 
         horizontalLayout_2->addWidget(debug_angle2);
@@ -132,17 +134,17 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        attack_motor1 = new QLabel(widget);
+        attack_motor1 = new QLabel(layoutWidget);
         attack_motor1->setObjectName(QStringLiteral("attack_motor1"));
 
         horizontalLayout_3->addWidget(attack_motor1);
 
-        com3 = new QComboBox(widget);
+        com3 = new QComboBox(layoutWidget);
         com3->setObjectName(QStringLiteral("com3"));
 
         horizontalLayout_3->addWidget(com3);
 
-        debug_angle3 = new QLineEdit(widget);
+        debug_angle3 = new QLineEdit(layoutWidget);
         debug_angle3->setObjectName(QStringLiteral("debug_angle3"));
 
         horizontalLayout_3->addWidget(debug_angle3);
@@ -150,6 +152,9 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
+        widget = new QChartView(MyWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(50, 220, 951, 471));
 
         retranslateUi(MyWidget);
 
