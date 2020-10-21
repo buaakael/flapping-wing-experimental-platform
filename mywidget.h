@@ -57,6 +57,8 @@ private:
     QSplineSeries *flapSeries;
     QSplineSeries *pitchSeries;
     QSplineSeries *attackSeries;
+    QValueAxis *axisX;
+    QValueAxis *axisY;
 
 
     Motion *motion = new Sin_Sin_Sin();

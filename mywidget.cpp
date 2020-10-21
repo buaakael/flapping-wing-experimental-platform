@@ -128,6 +128,7 @@ void MyWidget::on_model_clicked()
 
 void MyWidget::on_run_clicked()
 {
+    QVector<QPointF> points;
     int count = 0;
     sleep(3000);
     //移动三个电机到初始化位置
@@ -144,11 +145,17 @@ void MyWidget::on_run_clicked()
             mySerialPort2->write(motion->pitchSignal(j, 100));
             mySerialPort3->write(motion->attackSignal(j, 100));
             qDebug() << motion->flapAngle(j, 100) << "\t" << motion->pitchAngle(j, 100) << "\t" << motion->attackAngle(j, 100);
-            flapSeries->append(QPointF(count, motion->flapAngle(j, 100) / (4000 * 66.0)));
-            if (count % 20 == 0)
+            points.append(QPointF(count, motion->flapAngle(j, 100) / double(4000 * 66.0)));
+            if (count % 30 == 0 && count != 0)
             {
+                flapSeries->replace(points);
                 myChart->removeSeries(flapSeries);
+//                myChart->removeAxis(axisX);
+//                myChart->removeAxis(axisY);
                 myChart->addSeries(flapSeries);
+//                myChart->setAxisX(axisX, flapSeries);
+//                myChart->setAxisY(axisY, flapSeries);
+                myChart->createDefaultAxes();
                 ui->widget->setChart(myChart);
             }
             sleep(30);
@@ -208,8 +215,8 @@ void MyWidget::initChart()
     flapSeries = new QSplineSeries();
     pitchSeries = new QSplineSeries();
     attackSeries = new QSplineSeries();
-    QValueAxis *axisX = new QValueAxis();
-    QValueAxis *axisY = new QValueAxis();
+    axisX = new QValueAxis();
+    axisY = new QValueAxis();
     myChart->legend()->hide();
     myChart->setTheme(QChart::ChartThemeBlueCerulean);
     axisX->setRange(0, 300);
