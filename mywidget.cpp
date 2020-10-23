@@ -128,7 +128,9 @@ void MyWidget::on_model_clicked()
 
 void MyWidget::on_run_clicked()
 {
-    QVector<QPointF> points;
+    QVector<QPointF> fPoints;
+    QVector<QPointF> pPoints;
+    QVector<QPointF> aPoints;
     int count = 0;
     sleep(3000);
     //移动三个电机到初始化位置
@@ -145,19 +147,12 @@ void MyWidget::on_run_clicked()
             mySerialPort2->write(motion->pitchSignal(j, 100));
             mySerialPort3->write(motion->attackSignal(j, 100));
             qDebug() << motion->flapAngle(j, 100) << "\t" << motion->pitchAngle(j, 100) << "\t" << motion->attackAngle(j, 100);
-            points.append(QPointF(count, motion->flapAngle(j, 100) / double(4000 * 66.0)));
-            if (count % 30 == 0 && count != 0)
-            {
-                flapSeries->replace(points);
-                myChart->removeSeries(flapSeries);
-//                myChart->removeAxis(axisX);
-//                myChart->removeAxis(axisY);
-                myChart->addSeries(flapSeries);
-//                myChart->setAxisX(axisX, flapSeries);
-//                myChart->setAxisY(axisY, flapSeries);
-                myChart->createDefaultAxes();
-                ui->widget->setChart(myChart);
-            }
+            fPoints.append(QPointF(count, motion->flapAngle(j, 100) / double(4000 * 66.0) * 360));
+            pPoints.append(QPointF(count, motion->pitchAngle(j, 100) / double(4096 * 128.0) * 360));
+            aPoints.append(QPointF(count, motion->attackAngle(j, 100) / double(4096 * 128.0) * 360));
+            flapSeries->replace(fPoints);
+            pitchSeries->replace(pPoints);
+            attackSeries->replace(aPoints);
             sleep(30);
             count++;
         }
@@ -223,8 +218,14 @@ void MyWidget::initChart()
     axisY->setRange(-90,90);
     axisX->setTitleText("Time/s");
     axisY->setTitleText("Angle/°");
-    myChart->setAxisX(axisX);
-    myChart->setAxisY(axisY);
     myChart->addSeries(flapSeries);
+    myChart->addSeries(pitchSeries);
+    myChart->addSeries(attackSeries);
+    myChart->setAxisX(axisX, flapSeries);
+    myChart->setAxisY(axisY, flapSeries);
+    myChart->setAxisX(axisX, pitchSeries);
+    myChart->setAxisY(axisY, pitchSeries);
+    myChart->setAxisX(axisX, attackSeries);
+    myChart->setAxisY(axisY, attackSeries);
     ui->widget->setChart(myChart);
 }
