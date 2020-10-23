@@ -59,6 +59,7 @@ public:
         MyWidget->resize(1200, 800);
         openSerialPort = new QPushButton(MyWidget);
         openSerialPort->setObjectName(QStringLiteral("openSerialPort"));
+        openSerialPort->setEnabled(true);
         openSerialPort->setGeometry(QRect(110, 170, 93, 28));
         reset = new QPushButton(MyWidget);
         reset->setObjectName(QStringLiteral("reset"));
@@ -71,6 +72,7 @@ public:
         run->setGeometry(QRect(170, 710, 93, 28));
         closeSerialPort = new QPushButton(MyWidget);
         closeSerialPort->setObjectName(QStringLiteral("closeSerialPort"));
+        closeSerialPort->setEnabled(false);
         closeSerialPort->setGeometry(QRect(230, 170, 93, 28));
         init = new QPushButton(MyWidget);
         init->setObjectName(QStringLiteral("init"));

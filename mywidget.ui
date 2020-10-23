@@ -14,6 +14,9 @@
    <string>MyWidget</string>
   </property>
   <widget class="QPushButton" name="openSerialPort">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -66,6 +69,9 @@
    </property>
   </widget>
   <widget class="QPushButton" name="closeSerialPort">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -132,7 +138,7 @@
       <item>
        <widget class="QLabel" name="flap_motor1">
         <property name="text">
-         <string>上部电机</string>
+         <string>扑动电机</string>
         </property>
        </widget>
       </item>

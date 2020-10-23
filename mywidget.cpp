@@ -101,9 +101,12 @@ void MyWidget::on_openSerialPort_clicked()
     mySerialPort3->setParity(QSerialPort::NoParity);
     mySerialPort3->setStopBits(QSerialPort::OneStop);
     mySerialPort3->setFlowControl(QSerialPort::NoFlowControl);
+
+    ui->openSerialPort->setEnabled(false);
+    ui->closeSerialPort->setEnabled(true);
 }
 
-
+//发送驱动器复位信号，是驱动器复位
 void MyWidget::on_reset_clicked()
 {
     mySerialPort1->write(motion->resetSignal());
@@ -111,7 +114,7 @@ void MyWidget::on_reset_clicked()
     mySerialPort3->write(motion->resetSignal());
 }
 
-
+//发送驱动器模式选择信号，选择为速度位置模式
 void MyWidget::on_model_clicked()
 {
     mySerialPort1->write(motion->modelSignal());
@@ -126,8 +129,54 @@ void MyWidget::on_model_clicked()
     mySerialPort3->write(motion->attackResetSignal());
 }
 
+//关闭串口指令
+void MyWidget::on_closeSerialPort_clicked()
+{
+    closeSerialPort();
+    ui->openSerialPort->setEnabled(true);
+    ui->closeSerialPort->setEnabled(false);
+}
+
+//初始化驱动器状态，准备运动
+void MyWidget::on_init_clicked()
+{
+    //复位
+    mySerialPort1->write(motion->resetSignal());
+    mySerialPort2->write(motion->resetSignal());
+    mySerialPort3->write(motion->resetSignal());
+
+    sleep(500);
+
+    //选择模式
+    mySerialPort1->write(motion->modelSignal());
+    mySerialPort2->write(motion->modelSignal());
+    mySerialPort3->write(motion->modelSignal());
+
+    sleep(100);
+
+    //发送零位信息，固定电机位置
+    mySerialPort1->write(motion->flapResetSignal());
+    mySerialPort2->write(motion->pitchResetSignal());
+    mySerialPort3->write(motion->attackResetSignal());
+}
+
+//调试按钮，用来进行驱动器的初始位置调试
+void MyWidget::on_debug_clicked()
+{
+    int fAngle = ui->debug_angle1->text().toInt();
+    int pAngle = ui->debug_angle2->text().toInt();
+    int aAngle = ui->debug_angle3->text().toInt();
+//    qDebug() << fAngle << " " << pAngle << " " << aAngle << "\t";
+
+    mySerialPort1->write(motion->flapSignal(fAngle));
+    mySerialPort2->write(motion->pitchSignal(pAngle));
+    mySerialPort3->write(motion->attackSignal(aAngle));
+}
+
+//向驱动器发送运动指令，让翅膀开始运动
 void MyWidget::on_run_clicked()
 {
+    ui->run->setEnabled(false);
     QVector<QPointF> fPoints;
     QVector<QPointF> pPoints;
     QVector<QPointF> aPoints;
@@ -163,47 +212,10 @@ void MyWidget::on_run_clicked()
     mySerialPort1->write(motion->flapResetSignal());
     mySerialPort2->write(motion->pitchResetSignal());
     mySerialPort3->write(motion->attackResetSignal());
+    ui->run->setEnabled(true);
 }
 
-void MyWidget::on_closeSerialPort_clicked()
-{
-    closeSerialPort();
-}
-
-void MyWidget::on_init_clicked()
-{
-    //复位
-    mySerialPort1->write(motion->resetSignal());
-    mySerialPort2->write(motion->resetSignal());
-    mySerialPort3->write(motion->resetSignal());
-
-    sleep(500);
-
-    //选择模式
-    mySerialPort1->write(motion->modelSignal());
-    mySerialPort2->write(motion->modelSignal());
-    mySerialPort3->write(motion->modelSignal());
-
-    sleep(100);
-
-    //发送零位信息，固定电机位置
-    mySerialPort1->write(motion->flapResetSignal());
-    mySerialPort2->write(motion->pitchResetSignal());
-    mySerialPort3->write(motion->attackResetSignal());
-}
-
-void MyWidget::on_debug_clicked()
-{
-    int fAngle = ui->debug_angle1->text().toInt();
-    int pAngle = ui->debug_angle2->text().toInt();
-    int aAngle = ui->debug_angle3->text().toInt();
-//    qDebug() << fAngle << " " << pAngle << " " << aAngle << "\t";
-
-    mySerialPort1->write(motion->flapSignal(fAngle));
-    mySerialPort2->write(motion->pitchSignal(pAngle));
-    mySerialPort3->write(motion->attackSignal(aAngle));
-}
-
+//初始化动态曲线，添加坐标轴等信息
 void MyWidget::initChart()
 {
     myChart = new QChart();
