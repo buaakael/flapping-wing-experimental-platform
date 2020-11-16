@@ -50,10 +50,10 @@ QByteArray Motion::flapInitSignal()
     fInitData[3] = 0xF4;
     fInitData[4] = 0x01;
     fInitData[5] = 0xF4;
-    fInitData[6] = 0xFF;
-    fInitData[7] = 0xFF;
-    fInitData[8] = 0x54;
-    fInitData[9] = 0x20;
+    fInitData[6] = 0x00;
+    fInitData[7] = 0x00;
+    fInitData[8] = 0xED;
+    fInitData[9] = 0xD6;
 
     return fInitData;
 }
@@ -71,8 +71,8 @@ QByteArray Motion::pitchInitSignal()
     pInitData[5] = 0xD0;
     pInitData[6] = 0xFF;
     pInitData[7] = 0xFF;
-    pInitData[8] = 0xC5;
-    pInitData[9] = 0x68;
+    pInitData[8] = 0xEE;
+    pInitData[9] = 0xEF;
 
     return pInitData;
 }
@@ -88,10 +88,10 @@ QByteArray Motion::attackInitSignal()
     aInitData[3] = 0xD0;
     aInitData[4] = 0x07;
     aInitData[5] = 0xD0;
-    aInitData[6] = 0xFF;
-    aInitData[7] = 0xFF;
-    aInitData[8] = 0x15;
-    aInitData[9] = 0xA0;
+    aInitData[6] = 0x00;
+    aInitData[7] = 0x00;
+    aInitData[8] = 0x93;
+    aInitData[9] = 0xE9;
 
     return aInitData;
 }

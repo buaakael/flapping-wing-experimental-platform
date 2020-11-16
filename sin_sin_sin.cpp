@@ -313,7 +313,7 @@ int Sin_Sin_Sin::pitchAngle(int cur, int seg)
     double pw = 5.067;
 
 
-    int pAngle = 4096 * 128 / 360.0 *
+    int pAngle = -4096 * 128 / 360.0 *
             ( pa0
             + pa1 * cos(1 * pw * cur / seg) + pb1 * sin(1 * pw * cur / seg)
             + pa2 * cos(2 * pw * cur / seg) + pb2 * sin(2 * pw * cur / seg)
@@ -339,7 +339,7 @@ int Sin_Sin_Sin::attackAngle(int cur, int seg)
     double ab5 = 0.5704;
     double aw = 6.326;
 
-    int aAngle = 4096 * 128 / 360.0 *
+    int aAngle = -4096 * 128 / 360.0 *
             ( aa0
             + aa1 * cos(1 * aw * cur / seg) + ab1 * sin(1 * aw * cur / seg)
             + aa2 * cos(2 * aw * cur / seg) + ab2 * sin(2 * aw * cur / seg)

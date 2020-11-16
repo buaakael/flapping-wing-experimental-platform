@@ -159,14 +159,21 @@ void MyWidget::on_run_clicked()
             mySerialPort1->write(motion->flapSignal(fAngle));
             mySerialPort2->write(motion->pitchSignal(pAngle));
             mySerialPort3->write(motion->attackSignal(aAngle));
-            qDebug() << fAngle << "\t" << pAngle << "\t" << aAngle;
-            qDebug() << motion->attackSignal(aAngle);
-            fPoints.append(QPointF(count / 100.0, fAngle / double(4000 * 66.0) * 360));
-            pPoints.append(QPointF(count / 100.0, pAngle / double(4096 * 128.0) * 360));
-            aPoints.append(QPointF(count / 100.0, aAngle / double(4096 * 128.0) * 360));
-            flapSeries->replace(fPoints);
-            pitchSeries->replace(pPoints);
-            attackSeries->replace(aPoints);
+            if (i == 0 && j == 0)
+            {
+                sleep(1000);
+            }
+//            qDebug() << fAngle << "\t" << pAngle << "\t" << aAngle;
+//            qDebug() << motion->attackSignal(aAngle);
+            if (i == 0)
+            {
+                fPoints.append(QPointF(count / 100.0, fAngle / double(4000 * 66.0) * 360));
+                pPoints.append(QPointF(count / 100.0, pAngle / double(4096 * 128.0) * 360));
+                aPoints.append(QPointF(count / 100.0, aAngle / double(4096 * 128.0) * 360));
+                flapSeries->replace(fPoints);
+                pitchSeries->replace(pPoints);
+                attackSeries->replace(aPoints);
+            }
             sleep(30);
             count++;
         }
@@ -237,7 +244,7 @@ void MyWidget::initChart()
     axisY = new QValueAxis();
     myChart->legend()->hide();
     myChart->setTheme(QChart::ChartThemeBlueCerulean);
-    axisX->setRange(0, 6);
+    axisX->setRange(0, 1);
     axisY->setRange(-90,90);
     axisX->setTitleText("Time/T");
     axisY->setTitleText("Angle/°");
