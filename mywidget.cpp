@@ -174,7 +174,7 @@ void MyWidget::on_run_clicked()
                 pitchSeries->replace(pPoints);
                 attackSeries->replace(aPoints);
             }
-            sleep(30);
+            sleep(20);
             count++;
         }
     }

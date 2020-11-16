@@ -14,19 +14,19 @@ QByteArray Sin_Sin_Sin::flapSignal(int cur, int seg)
 
     t1.append(0x23);
     t1.append(0x06);
-    t1.append(0x07);
-    t1.append(0xD0);
-    t1.append(0x07);
-    t1.append(0xD0);
+    t1.append(0x09);
+    t1.append(0xC4);
+    t1.append(0x09);
+    t1.append(0xC4);
     t1.append((char)0x00);
     t1.append((char)0x00);
 
     t2.append(0x23);
     t2.append(0x06);
-    t2.append(0x07);
-    t2.append(0xD0);
-    t2.append(0x07);
-    t2.append(0xD0);
+    t2.append(0x09);
+    t2.append(0xC4);
+    t2.append(0x09);
+    t2.append(0xC4);
     t2.append(0xFF);
     t2.append(0xFF);
 
@@ -57,21 +57,22 @@ QByteArray Sin_Sin_Sin::pitchSignal(int cur, int seg)
 
     t1.append(0x23);
     t1.append(0x06);
-    t1.append(0x07);
-    t1.append(0xD0);
-    t1.append(0x07);
-    t1.append(0xD0);
+    t1.append(0x13);
+    t1.append(0x88);
+    t1.append(0x0F);
+    t1.append(0xA0);
     t1.append((char)0x00);
     t1.append((char)0x00);
 
     t2.append(0x23);
     t2.append(0x06);
-    t2.append(0x07);
-    t2.append(0xD0);
-    t2.append(0x07);
-    t2.append(0xD0);
+    t2.append(0x13);
+    t2.append(0x88);
+    t2.append(0x0F);
+    t2.append(0xA0);
     t2.append(0xFF);
     t2.append(0xFF);
+
 
     int pAngle = pitchAngle(cur, seg);
     temp2[0] = (uchar)((0xFF00&pAngle)>>8);
@@ -100,19 +101,19 @@ QByteArray Sin_Sin_Sin::attackSignal(int cur, int seg)
 
     t1.append(0x23);
     t1.append(0x06);
-    t1.append(0x07);
-    t1.append(0xD0);
-    t1.append(0x07);
-    t1.append(0xD0);
+    t1.append(0x13);
+    t1.append(0x88);
+    t1.append(0x0F);
+    t1.append(0xA0);
     t1.append((char)0x00);
     t1.append((char)0x00);
 
     t2.append(0x23);
     t2.append(0x06);
-    t2.append(0x07);
-    t2.append(0xD0);
-    t2.append(0x07);
-    t2.append(0xD0);
+    t2.append(0x13);
+    t2.append(0x88);
+    t2.append(0x0F);
+    t2.append(0xA0);
     t2.append(0xFF);
     t2.append(0xFF);
 
@@ -148,19 +149,19 @@ QByteArray Sin_Sin_Sin::flapSignal(int fAngle)
 
     t1.append(0x23);
     t1.append(0x06);
-    t1.append(0x07);
-    t1.append(0xD0);
-    t1.append(0x07);
-    t1.append(0xD0);
+    t1.append(0x09);
+    t1.append(0xC4);
+    t1.append(0x09);
+    t1.append(0xC4);
     t1.append((char)0x00);
     t1.append((char)0x00);
 
     t2.append(0x23);
     t2.append(0x06);
-    t2.append(0x07);
-    t2.append(0xD0);
-    t2.append(0x07);
-    t2.append(0xD0);
+    t2.append(0x09);
+    t2.append(0xC4);
+    t2.append(0x09);
+    t2.append(0xC4);
     t2.append(0xFF);
     t2.append(0xFF);
 
@@ -190,19 +191,19 @@ QByteArray Sin_Sin_Sin::pitchSignal(int pAngle)
 
     t1.append(0x23);
     t1.append(0x06);
-    t1.append(0x07);
-    t1.append(0xD0);
-    t1.append(0x07);
-    t1.append(0xD0);
+    t1.append(0x13);
+    t1.append(0x88);
+    t1.append(0x0F);
+    t1.append(0xA0);
     t1.append((char)0x00);
     t1.append((char)0x00);
 
     t2.append(0x23);
     t2.append(0x06);
-    t2.append(0x07);
-    t2.append(0xD0);
-    t2.append(0x07);
-    t2.append(0xD0);
+    t2.append(0x13);
+    t2.append(0x88);
+    t2.append(0x0F);
+    t2.append(0xA0);
     t2.append(0xFF);
     t2.append(0xFF);
 
@@ -232,19 +233,19 @@ QByteArray Sin_Sin_Sin::attackSignal(int aAngle)
 
     t1.append(0x23);
     t1.append(0x06);
-    t1.append(0x07);
-    t1.append(0xD0);
-    t1.append(0x07);
-    t1.append(0xD0);
+    t1.append(0x13);
+    t1.append(0x88);
+    t1.append(0x0F);
+    t1.append(0xA0);
     t1.append((char)0x00);
     t1.append((char)0x00);
 
     t2.append(0x23);
     t2.append(0x06);
-    t2.append(0x07);
-    t2.append(0xD0);
-    t2.append(0x07);
-    t2.append(0xD0);
+    t2.append(0x13);
+    t2.append(0x88);
+    t2.append(0x0F);
+    t2.append(0xA0);
     t2.append(0xFF);
     t2.append(0xFF);
 
