@@ -129,7 +129,57 @@ void MyWidget::on_model_clicked()
     mySerialPort3->write(motion->attackResetSignal());
 }
 
-//关闭串口指令
+//向驱动器发送运动指令，让翅膀开始运动
+void MyWidget::on_run_clicked()
+{
+    ui->run->setEnabled(false);
+    QVector<QPointF> fPoints;
+    QVector<QPointF> pPoints;
+    QVector<QPointF> aPoints;
+
+    int fAngle = 0;
+    int pAngle = 0;
+    int aAngle = 0;
+
+    int count = 0;
+    sleep(3000);
+    //移动三个电机到初始化位置
+    mySerialPort1->write(motion->flapInitSignal());
+    mySerialPort2->write(motion->pitchInitSignal());
+    mySerialPort3->write(motion->attackInitSignal());
+    sleep(3000);
+    //开始运动
+    for (int i = 0; i < 6; ++i)
+    {
+        for (int j = 0; j <=100; ++j)
+        {
+            fAngle = motion->flapAngle(j, 100);
+            pAngle = motion->pitchAngle(j, 100);
+            aAngle = motion->attackAngle(j, 100);
+            mySerialPort1->write(motion->flapSignal(fAngle));
+            mySerialPort2->write(motion->pitchSignal(pAngle));
+            mySerialPort3->write(motion->attackSignal(aAngle));
+            qDebug() << fAngle << "\t" << pAngle << "\t" << aAngle;
+            qDebug() << motion->attackSignal(aAngle);
+            fPoints.append(QPointF(count / 100.0, fAngle / double(4000 * 66.0) * 360));
+            pPoints.append(QPointF(count / 100.0, pAngle / double(4096 * 128.0) * 360));
+            aPoints.append(QPointF(count / 100.0, aAngle / double(4096 * 128.0) * 360));
+            flapSeries->replace(fPoints);
+            pitchSeries->replace(pPoints);
+            attackSeries->replace(aPoints);
+            sleep(30);
+            count++;
+        }
+    }
+
+    sleep(3000);
+    //运动结束，复位到初始位置
+    mySerialPort1->write(motion->flapResetSignal());
+    mySerialPort2->write(motion->pitchResetSignal());
+    mySerialPort3->write(motion->attackResetSignal());
+    ui->run->setEnabled(true);
+}
+
 void MyWidget::on_closeSerialPort_clicked()
 {
     closeSerialPort();
@@ -173,66 +223,29 @@ void MyWidget::on_debug_clicked()
     mySerialPort3->write(motion->attackSignal(aAngle));
 }
 
-//向驱动器发送运动指令，让翅膀开始运动
-void MyWidget::on_run_clicked()
-{
-    ui->run->setEnabled(false);
-    QVector<QPointF> fPoints;
-    QVector<QPointF> pPoints;
-    QVector<QPointF> aPoints;
-    int count = 0;
-    sleep(3000);
-    //移动三个电机到初始化位置
-    mySerialPort1->write(motion->flapInitSignal());
-    mySerialPort2->write(motion->pitchInitSignal());
-    mySerialPort3->write(motion->attackInitSignal());
-    sleep(3000);
-    //开始运动
-    for (int i = 0; i < 3; ++i)
-    {
-        for (int j = 0; j <=100; ++j)
-        {
-            mySerialPort1->write(motion->flapSignal(j, 100));
-            mySerialPort2->write(motion->pitchSignal(j, 100));
-            mySerialPort3->write(motion->attackSignal(j, 100));
-            qDebug() << motion->flapAngle(j, 100) << "\t" << motion->pitchAngle(j, 100) << "\t" << motion->attackAngle(j, 100);
-            fPoints.append(QPointF(count, motion->flapAngle(j, 100) / double(4000 * 66.0) * 360));
-            pPoints.append(QPointF(count, motion->pitchAngle(j, 100) / double(4096 * 128.0) * 360));
-            aPoints.append(QPointF(count, motion->attackAngle(j, 100) / double(4096 * 128.0) * 360));
-            flapSeries->replace(fPoints);
-            pitchSeries->replace(pPoints);
-            attackSeries->replace(aPoints);
-            sleep(30);
-            count++;
-        }
-    }
-
-    sleep(3000);
-    //运动结束，复位到初始位置
-    mySerialPort1->write(motion->flapResetSignal());
-    mySerialPort2->write(motion->pitchResetSignal());
-    mySerialPort3->write(motion->attackResetSignal());
-    ui->run->setEnabled(true);
-}
 
 //初始化动态曲线，添加坐标轴等信息
 void MyWidget::initChart()
 {
     myChart = new QChart();
+
     flapSeries = new QSplineSeries();
     pitchSeries = new QSplineSeries();
     attackSeries = new QSplineSeries();
+
     axisX = new QValueAxis();
     axisY = new QValueAxis();
     myChart->legend()->hide();
     myChart->setTheme(QChart::ChartThemeBlueCerulean);
-    axisX->setRange(0, 300);
+    axisX->setRange(0, 6);
     axisY->setRange(-90,90);
-    axisX->setTitleText("Time/s");
+    axisX->setTitleText("Time/T");
     axisY->setTitleText("Angle/°");
+
     myChart->addSeries(flapSeries);
     myChart->addSeries(pitchSeries);
     myChart->addSeries(attackSeries);
+
     myChart->setAxisX(axisX, flapSeries);
     myChart->setAxisY(axisY, flapSeries);
     myChart->setAxisX(axisX, pitchSeries);
