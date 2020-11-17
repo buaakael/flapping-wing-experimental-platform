@@ -142,7 +142,7 @@ void MyWidget::on_run_clicked()
     int aAngle = 0;
 
     int count = 0;
-    sleep(3000);
+    sleep(10000);
     //移动三个电机到初始化位置
     mySerialPort1->write(motion->flapInitSignal());
     mySerialPort2->write(motion->pitchInitSignal());
@@ -174,7 +174,7 @@ void MyWidget::on_run_clicked()
                 pitchSeries->replace(pPoints);
                 attackSeries->replace(aPoints);
             }
-            sleep(20);
+            sleep(30);
             count++;
         }
     }
