@@ -142,11 +142,11 @@ void MyWidget::on_run_clicked()
     int aAngle = 0;
 
     int count = 0;
-    sleep(10000);
-    //移动三个电机到初始化位置
-    mySerialPort1->write(motion->flapInitSignal());
-    mySerialPort2->write(motion->pitchInitSignal());
-    mySerialPort3->write(motion->attackInitSignal());
+//    sleep(3000);
+//    //移动三个电机到初始化位置
+//    mySerialPort1->write(motion->flapInitSignal());
+//    mySerialPort2->write(motion->pitchInitSignal());
+//    mySerialPort3->write(motion->attackInitSignal());
     sleep(3000);
     //开始运动
     for (int i = 0; i < 6; ++i)
@@ -215,6 +215,12 @@ void MyWidget::on_init_clicked()
     mySerialPort1->write(motion->flapResetSignal());
     mySerialPort2->write(motion->pitchResetSignal());
     mySerialPort3->write(motion->attackResetSignal());
+
+    sleep(3000);
+    //移动三个电机到初始化位置
+    mySerialPort1->write(motion->flapInitSignal());
+    mySerialPort2->write(motion->pitchInitSignal());
+    mySerialPort3->write(motion->attackInitSignal());
 }
 
 //调试按钮，用来进行驱动器的初始位置调试
